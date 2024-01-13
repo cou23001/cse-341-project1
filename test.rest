@@ -1,0 +1,5 @@
+### GET Request to Retrieve Contact Information
+GET https://cse-341-project1-lfo7.onrender.com/users/
+
+### GET Request to Retrieve One Contact Information
+GET https://cse-341-project1-lfo7.onrender.com/users/6483ce023f46080356e0c6d6
