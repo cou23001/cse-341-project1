@@ -12,3 +12,31 @@ GET https://cse-341-project1-lfo7.onrender.com/users/6483ce023f46080356e0c6d7
 
 ### GET Request to Retrieve One Contact Information
 GET https://cse-341-project1-lfo7.onrender.com/users/6483ce023f46080356e0c6d8
+
+### GET Request to Retrieve Contact Information
+GET http://localhost:3000/users/
+
+### Create a Contact 
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+    "email": "brenda@test.com",
+    "username": "brenda@test.com",
+    "name": "Brenda",
+    "ipaddress": "94.121.163.68"
+}
+
+### Update a Contact 
+PUT http://localhost:3000/users/65a83b261926b96fd3522bac HTTP/1.1
+content-type: application/json
+
+{
+    "email": "brendita@test.com",
+    "username": "brendita@test.com",
+    "name": "Brenda",
+    "ipaddress": "94.121.163.68"
+}
+
+### Delete a Contact 
+DELETE http://localhost:3000/users/65a83df105980c32646ba23a HTTP/1.1
