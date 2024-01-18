@@ -7,6 +7,17 @@ const mongodb = require('./data/database')
 const port = process.env.port || 3000;
 
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
+    );
+    res.setHeader('Access-Control-Allow-Methods','GET','POST','PUT','DELETE','OPTIONS');
+    next();
+});
+
 app.use('/', routes);
 
 mongodb.initDb((err) => {
