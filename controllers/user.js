@@ -8,6 +8,8 @@ require('dotenv').config();
 let apiKey = process.env.apiKey
 
 exports.getAll = (req, res) => {
+  //#swagger.tags=['Users']
+  //#swagger.description= apiKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
   if (req.header('apiKey') === apiKey) {
     User.find(
       {},
@@ -35,23 +37,31 @@ exports.getAll = (req, res) => {
 
 exports.getSingle = (req, res) => {
   //#swagger.tags=['Users']
+  //#swagger.description= apiKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
   if (req.header('apiKey') === apiKey) {
-    const _id = new ObjectId(req.params.id);
+
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must user a valid user id to find a user');
+    } else {
+
     
-    User.find({ _id: _id })
-      .then((data) => {
-        if (data.length === 0)
-          res
-          .status(404)
-          .send({ message: 'Not found User with id ' + _id });
-        else
-          res.send(data[0]);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: 'Error retrieving User with id=' + _id,
+      const _id = new ObjectId(req.params.id);
+      
+      User.find({ _id: _id })
+        .then((data) => {
+          if (data.length === 0)
+            res
+            .status(404)
+            .send({ message: 'Not found User with id ' + _id });
+          else
+            res.send(data[0]);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: 'Error retrieving User with id=' + _id,
+        });
       });
-    });
+    }
   } else {
     res.send('Invalid apiKey, please read the documentation.');
   }
@@ -59,6 +69,8 @@ exports.getSingle = (req, res) => {
 
 // Create a User
 exports.createUser = (req, res) => {
+  //#swagger.tags=['Users']
+  //#swagger.description= apiKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
   if (req.header('apiKey') === apiKey) {
     // Validate request
     if (!req.body.name) {
@@ -93,11 +105,12 @@ exports.createUser = (req, res) => {
 
 // Update a User
 exports.updateUser = (req, res) => {
+  //#swagger.tags=['Users']
+  //#swagger.description= apiKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
   if (req.header('apiKey') === apiKey) {
-    // Validate request
-    if (!req.body.name) {
-      res.status(400).send({ message: 'Content can not be empty!' });
-      return;
+    
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must user a valid user id to update a user');
     }
     const userId = new ObjectId(req.params.id);
 
@@ -129,7 +142,14 @@ exports.updateUser = (req, res) => {
 
 // Delete a User
 exports.deleteUser = (req, res) => {
+  //#swagger.tags=['Users']
+  //#swagger.description= apiKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
   if (req.header('apiKey') === apiKey) {
+
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must user a valid user id to delete a user');
+    }
+
     const userId = new ObjectId(req.params.id);
 
     // Delete the user by finding it based on a unique identifier (e.g., user ID)
