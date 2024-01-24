@@ -15,9 +15,15 @@ GET https://cse-341-project1-lfo7.onrender.com/users/6483ce023f46080356e0c6d8
 
 ### GET Request to Retrieve Contact Information
 GET http://localhost:3000/users/
+APIKEY: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
 
-### Create a Contact 
+### GET Request to Retrieve Contact Information
+GET http://localhost:3000/users/6483ce023f46080356e0c6d5
+APIKEY: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
+
+### Create a User 
 POST http://localhost:3000/users HTTP/1.1
+APIKEY: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
 content-type: application/json
 
 {
@@ -27,16 +33,19 @@ content-type: application/json
     "ipaddress": "94.121.163.68"
 }
 
-### Update a Contact 
-PUT http://localhost:3000/users/65a83b261926b96fd3522bac HTTP/1.1
+### Update a User 
+PUT http://localhost:3000/users/65b161a9bfc61d0d10b9b68d HTTP/1.1
+APIKEY: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
 content-type: application/json
 
 {
-    "email": "brendita@test.com",
-    "username": "brendita@test.com",
-    "name": "Brenda",
-    "ipaddress": "94.121.163.68"
+    "email": "brenditak@test.com",
+    "username": "brenditak@test.com",
+    "name": "Brenda K",
+    "ipaddress": "91.221.163.68"
 }
 
-### Delete a Contact 
-DELETE http://localhost:3000/users/65a83df105980c32646ba23a HTTP/1.1
+### Delete a User 
+DELETE http://localhost:3000/users/65b161a9bfc61d0d10b9b68d HTTP/1.1
+APIKEY: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
+

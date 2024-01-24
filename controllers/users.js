@@ -3,11 +3,30 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
     //#swagger.tags=['Users']
-    const result = await mongodb.getDb().db().collection('users').find();
-    result.toArray().then((users) => {
-        res.setHeader('Content-Type','application/json');
-        res.status(200).json(users);
-    });
+    //const result = await mongodb.getDb().db().collection('users').find();
+    //result.toArray().then((users) => {
+    //    res.setHeader('Content-Type','application/json');
+    //    res.status(200).json(users);
+    //});
+    User.find(
+        {},
+        {
+          email: 1,
+          username: 1,
+          name: 1,
+          ipaddress: 1,
+          _id: 0,
+        }
+      )
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || 'Some error occurred while retrieving temples.',
+          });
+        });
 };
 
 const getSingle = async (req, res) => {
